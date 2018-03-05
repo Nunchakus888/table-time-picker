@@ -2,7 +2,6 @@
 .sass-cache
 .tmp
 .idea
-dist
 node_modules
 local.js
 fabfile.pyc
