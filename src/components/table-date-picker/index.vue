@@ -1,11 +1,12 @@
 <style lang="stylus" scoped>
 .table-date-picker
   width 100%
+  margin 100px auto
   .week-column
     width 10%
   .hour-row
     cursor pointer
-    width 90%
+    min-width 50%
   .cell, .cell-border
     text-align center
     border solid .5px #fff
@@ -32,10 +33,17 @@
     display flex
     flex-direction column
     justify-content flex-start
+    align-items center
+
   .flex-v-center-j-start
     display flex
     align-items center
     justify-content flex-start
+  .btn
+    button
+      cursor pointer
+    justify-content space-evenly
+    margin 20px auto
 </style>
 
 
@@ -56,8 +64,9 @@
           :class="{'cell-selected': cell.selected}",
           @click="handleClick({cell, columnIndex})"
           )
-    button.el-icon-delete.red(type="text", @click="reset") 清空设置时段
-    button(type="text", @click="autoGo(rows[1])") let's go
+    .flex-center.btn
+      button.el-icon-delete.red(type="text", @click="reset") 清空设置时段
+      button(type="text", @click="autoGo(rows[1])") let's go
 
 </template>
 
