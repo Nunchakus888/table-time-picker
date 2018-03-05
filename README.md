@@ -1,4 +1,4 @@
-# table-date-picker
+# table-time-picker
 
 > Use Table Time Picker for Time select in a week
 

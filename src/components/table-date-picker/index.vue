@@ -78,7 +78,7 @@ let rowStar = null
 let cellStar = 0
 let selectRowStar = 1
 export default {
-  name: 'table-date-picker',
+  name: 'table-time-picker',
   props: {
     rows: Array
   },

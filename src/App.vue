@@ -1,15 +1,15 @@
 <template>
   <div>
-    <table-date-picker :rows='rows' @change='cellChange'></table-date-picker>
+    <table-time-picker :rows='rows' @change='cellChange'></table-time-picker>
   </div>
 </template>
 
 <script>
-import tableDatePicker from './components/table-date-picker/index.vue'
+import tableTimePicker from './components/table-date-picker/index.vue'
 export default {
   name: 'App',
   components: {
-    tableDatePicker
+    tableTimePicker
   },
   data () {
     return {

@@ -1,7 +1,7 @@
 {
-  "name": "table-date-picker",
+  "name": "table-time-picker",
   "version": "1.0.0",
-  "description": "Use Time Picker for Time select",
+  "description": "Use Table Time Picker for Time select in a week",
   "author": "nunchakus <nunchakus2012@gmail.com>",
   "private": true,
   "scripts": {
