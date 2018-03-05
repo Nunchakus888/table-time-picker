@@ -22,8 +22,22 @@
   .unselect
     cursor default
     user-select none
-
+  .flex-center
+    display flex
+    align-items center
+    justify-content center
+  .flex-a-baseline-i
+    align-items baseline !important
+  .flex-col-start
+    display flex
+    flex-direction column
+    justify-content flex-start
+  .flex-v-center-j-start
+    display flex
+    align-items center
+    justify-content flex-start
 </style>
+
 
 <template lang="pug">
   .table-date-picker
@@ -42,13 +56,12 @@
           :class="{'cell-selected': cell.selected}",
           @click="handleClick({cell, columnIndex})"
           )
-    el-button.el-icon-delete.red(type="text", @click="reset") 清空设置时段
-    el-button(type="text", @click="autoGo(rows[1])") let's go
+    button.el-icon-delete.red(type="text", @click="reset") 清空设置时段
+    button(type="text", @click="autoGo(rows[1])") let's go
 
 </template>
 
 <script>
-// let dragStartCells = null
 let dragOverCells = null
 let preDragOverCell = null
 let colStar = null
@@ -62,7 +75,6 @@ export default {
   },
   data () {
     return {
-
     }
   },
   computed: {
@@ -112,7 +124,6 @@ export default {
           cellStar = 0
           this.autoGo(this.rows[selectRowStar])
         } else {
-//          this.reset()
           cellStar = 0
           selectRowStar = 1
           setTimeout(() => {
@@ -162,6 +173,7 @@ export default {
             }
           }
           this.$emit('change', this.getSelectedCell())
+          localStorage.setItem('cell', JSON.stringify(this.getSelectedCell()))
           preDragOverCell = null
           dragOverCells.clear()
           colStar = rowStar = null
