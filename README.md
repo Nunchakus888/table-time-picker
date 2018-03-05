@@ -2,11 +2,11 @@
 
 > Use Table Time Picker for Time select in a week
 
-demo
+### demo
 
 ![](./demo.gif)
 
 
-character auto go~~
+### character
 ![](./demo2018.gif)
 
