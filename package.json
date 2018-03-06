@@ -70,6 +70,10 @@
     "node": ">= 6.0.0",
     "npm": ">= 3.0.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:Nunchakus888/table-time-picker.git"
+  },
   "browserslist": [
     "> 1%",
     "last 2 versions",
