@@ -51,3 +51,12 @@ rows: (() => {
 ```
 
 这里是批量生成，可根据实际需要自定义
+
+
+### 本地调试
+```
+git clone git@github.com:Nunchakus888/table-time-picker.git
+```
+`npm i`
+
+`npm run dev`
