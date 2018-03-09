@@ -15,9 +15,7 @@
 `npm i git+ssh://git@github.com:Nunchakus888/table-time-picker.git`
 
 ```
-<script>
-  import tableTimePicker from './table-date-picker'
-</script>
+import tableTimePicker from 'table-date-picker'
 
 <table-time-picker :rows='rows' @change='cellChange'></table-time-picker>
 ```
