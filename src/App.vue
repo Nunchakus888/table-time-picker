@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import tableTimePicker from './components/table-date-picker/index.vue'
+import tableTimePicker from './table-date-picker'
 export default {
   name: 'App',
   components: {
@@ -25,7 +25,6 @@ export default {
           return [...row].map((m, n) => {
             return {
               value: n,
-              // selected: !!~~(Math.random() * 10 / 4)
               selected: false
             }
           })
