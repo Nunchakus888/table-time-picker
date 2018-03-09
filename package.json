@@ -4,7 +4,7 @@
   "description": "Use Table Time Picker for Time select in a week",
   "author": "nunchakus <nunchakus2012@gmail.com>",
   "private": true,
-  "main": "src/table-date-picker.js",
+  "main": "src/table-date-picker",
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
