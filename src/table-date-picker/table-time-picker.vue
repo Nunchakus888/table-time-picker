@@ -1,6 +1,9 @@
 <style lang="stylus" scoped>
 .table-date-picker
+  font-size 12px
+  color #909399
   width 100%
+  line-height 12px
   margin 100px auto
   .week-column
     width 10%
@@ -11,16 +14,18 @@
     text-align center
     border solid .5px #fff
     display block
-    width 30px
-    height 30px
+    width 26px
+    height 26px
   .cell-border
     background #f5f7fa
-    border solid .5px #eff2f7
+    border solid 1px #e4e7ed
   .cell-selected
-    background #94cff9
+    border solid 1px #8dc5fc
+    background #bbdcfc
   .red
     color red
   .unselect
+    line-height 30px
     cursor default
     user-select none
   .flex-center
@@ -80,15 +85,52 @@ let selectRowStar = 1
 export default {
   name: 'table-time-picker',
   props: {
-    rows: Array
+    selectedPoint: {
+      type: Array,
+      default: null
+    }
   },
   data () {
     return {
+      sectionTimes: null,
+      categoryName: '自定义',
+      rows: (() => {
+        const cells = new Array(24).fill(0)
+        const row = cells.map((v, i) => {
+          return {
+            value: i,
+            selected: false
+          }
+        })
+        return new Array(8).fill(0).map((item, index) => {
+          return [...row].map((m, n) => {
+            return {
+              value: n,
+              selected: m.selected
+            }
+          })
+        })
+      })()
     }
   },
   computed: {
     columns () {
       return ['', '周一', '周二', '周三', '周四', '周五', '周六', '周日']
+    }
+  },
+  created() {
+    if (this.selectedPoint && this.selectedPoint.length) {
+      this.rows.forEach((i, index) => {
+        if (index > 0) {
+          i && i.forEach((j, jIndex) => {
+            this.selectedPoint[index - 1].forEach(k => {
+              if (j.value === k) {
+                i[jIndex].selected = true
+              }
+            })
+          })
+        }
+      })
     }
   },
   methods: {
@@ -98,6 +140,17 @@ export default {
       this.$emit('change', this.getSelectedCell())
     },
     getSelectedCell() {
+      return this.rows.map((i, index) => {
+        if (index > 0) {
+          return i.map(j => {
+            if (j.selected) {
+              return j.value
+            }
+          }).filter(i => i)
+        }
+      }).filter(i => i)
+    },
+    getSelectedCellRowAndColData() {
       const res = this.rows.map((i, index) => {
         return i.filter(j => {
           if (j.selected) {
@@ -123,6 +176,7 @@ export default {
         setTimeout(() => {
           if (i[cellStar]) {
             i[cellStar].selected = !i[cellStar].selected
+            this.$emit('change', this.getSelectedCell())
             cellStar++
             this.autoGo(i)
           }
@@ -149,6 +203,7 @@ export default {
           j.selected = false
         })
       })
+      this.$emit('reset-selected')
     },
     dragHandle(type, $event, payload) {
       $event.stopPropagation()
@@ -157,7 +212,6 @@ export default {
         case 'e-dragstart':
           colStar = columnIndex
           rowStar = rowIndex
-          // $event.target.style.background = '#94cff9'
           break
         case 'e-dragover':
           if (preDragOverCell === cell) return
@@ -182,11 +236,9 @@ export default {
             }
           }
           this.$emit('change', this.getSelectedCell())
-          localStorage.setItem('cell', JSON.stringify(this.getSelectedCell()))
           preDragOverCell = null
           dragOverCells.clear()
           colStar = rowStar = null
-          break
       }
     }
   }

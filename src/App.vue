@@ -1,36 +1,27 @@
 <template>
   <div>
-    <table-time-picker :rows='rows' @change='cellChange'></table-time-picker>
+    <table-time-picker
+      :selectedPoint="rows"
+      @change="cellChange"
+      @reset-selected="rows = []"
+    >
+    </table-time-picker>
+    <time-section :details="rows"></time-section>
   </div>
 </template>
 
 <script>
 import tableTimePicker from './table-date-picker'
+import TimeSection from './table-date-picker/time-section'
 export default {
   name: 'App',
   components: {
-    tableTimePicker
+    tableTimePicker,
+    TimeSection
   },
   data () {
     return {
-      rows: (() => {
-        const cells = new Array(24).fill(0)
-        const row = cells.map((v, i) => {
-          return {
-            value: i,
-            selected: false
-          }
-        })
-        return new Array(8).fill(0).map((item, index) => {
-          return [...row].map((m, n) => {
-            return {
-              value: n,
-              selected: false
-            }
-          })
-        })
-      })(),
-      '二零一八': [
+      rows: [
         [2, 3, 4, 5, 8, 9, 10, 11, 15, 19, 20, 21, 22],
         [5, 8, 11, 14, 15, 19, 22],
         [5, 8, 11, 15, 19, 22],
@@ -42,7 +33,7 @@ export default {
     }
   },
   mounted() {
-    this.二零一八.forEach((i, index1) => {
+    this.rows.forEach((i, index1) => {
       i.forEach(l => {
         this.rows.forEach((j, index2) => {
           j.forEach(k => {
@@ -58,7 +49,7 @@ export default {
   },
   methods: {
     cellChange(payload) {
-      console.log('---------------cellChange', payload)
+      this.rows = payload
     },
   }
 }
