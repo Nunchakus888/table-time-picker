@@ -1,6 +1,7 @@
 # table-time-picker
 
 > Use Table Time Picker for Time select in a week
+时间选择器，同样适用于电影院选座～
 
 ### demo
 
@@ -29,26 +30,18 @@ import tableTimePicker from 'table-date-picker'
 
 ### 数据结构
 ```
-rows: (() => {
-        const cells = new Array(24).fill(0)
-        const row = cells.map((v, i) => {
-          return {
-            value: i,
-            selected: false
-          }
-        })
-        return new Array(8).fill(0).map((item, index) => {
-          return [...row].map((m, n) => {
-            return {
-              value: n,
-              selected: false
-            }
-          })
-        })
-      })()
+rows: [
+        [2, 3, 4, 5, 8, 9, 10, 11, 15, 19, 20, 21, 22],
+        [5, 8, 11, 14, 15, 19, 22],
+        [5, 8, 11, 15, 19, 22],
+        [2, 3, 4, 5, 8, 11, 15, 19, 20, 21, 22],
+        [2, 8, 11, 15, 19, 22],
+        [2, 8, 11, 15, 19, 22],
+        [2, 3, 4, 5, 8, 9, 10, 11, 14, 15, 16, 19, 20, 21, 22]
+      ]
 ```
 
-这里是批量生成，可根据实际需要自定义
+最简单的二维结构，可自己配置
 
 
 ### 本地调试
@@ -58,3 +51,7 @@ git clone git@github.com:Nunchakus888/table-time-picker.git
 `npm i`
 
 `npm run dev`
+
+
+### 移动端
+什么？移动端？不知道我懒么～～略略略。。
