@@ -8,6 +8,7 @@
   .container
     width 800px
     margin 0 auto
+    margin-bottom 200px
   .row
     font-size 12px
     min-height 36px

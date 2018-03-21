@@ -7,6 +7,7 @@
     >
     </table-time-picker>
     <time-section :details="rows"></time-section>
+
   </div>
 </template>
 

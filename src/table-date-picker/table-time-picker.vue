@@ -4,7 +4,7 @@
   color #909399
   width 100%
   line-height 12px
-  margin 100px auto
+  margin 0 auto
   .week-column
     width 10%
   .hour-row
