@@ -1,7 +1,6 @@
 # table-time-picker
 
 > Use Table Time Picker for Time select in a week
-时间选择器，同样适用于电影院选座～
 
 ### demo
 
